@@ -6,15 +6,21 @@ text_dictionary = {}
 
 def main():
     infile = open("text.txt", "r")
-    file_contents = infile.read()
-
-    print(file_contents)
+    file_contents = str(infile.read())
     split_it_up(file_contents)
 
-
-main()
+    print(f'{"WORD":<12}COUNT')
 
 
 def split_it_up(file_contents):
-    for x in file_contents:
-        file_contents.split()
+    for word in file_contents.split():
+
+        if word in text_dictionary:
+            text_dictionary[word] += 1
+    else:
+        text_dictionary[word] = 1
+
+    return text_dictionary
+
+
+main()
