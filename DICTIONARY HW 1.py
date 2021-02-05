@@ -10,8 +10,6 @@ def main():
     clean_string = strip_string(file_contents)
     text_dictionary = split_it_up(clean_string, text_dictionary)
 
-    # print(f'{"WORD":<12}COUNT')
-
     for word, count in sorted(text_dictionary.items()):
         print(word, count)
 
@@ -19,14 +17,13 @@ def main():
 ##this function does literally nothing helpful!!!!##
 def strip_string(file_contents):
     undesired = ["'", '"', ",", ".", "!", ":", ";", "#", "@", "?"]
-    file_contents = file_contents.split()
-    for ch in file_contents:
-        if ch in undesired:
-            file_contents = file_contents.remove[ch]
-    return file_contents
+    for ch in undesired:
+        clean_string = file_contents.rstrip(ch)
+    return clean_string
 
 
 def split_it_up(clean_string, text_dictionary):
+    clean_string = clean_string.split()
     for word in clean_string:
         if word in text_dictionary:
             text_dictionary[word] += 1
