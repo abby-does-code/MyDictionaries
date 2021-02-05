@@ -16,17 +16,18 @@ def main():
         print(word, count)
 
 
+##this function does literally nothing helpful!!!!##
 def strip_string(file_contents):
     undesired = ["'", '"', ",", ".", "!", ":", ";", "#", "@", "?"]
-    str_check = file_contents.upper()
-    for x in undesired:
-        clean_string = str_check.replace(x, " ")
-    print(clean_string)
-    return clean_string
+    file_contents = file_contents.split()
+    for ch in file_contents:
+        if ch in undesired:
+            file_contents = file_contents.remove[ch]
+    return file_contents
 
 
 def split_it_up(clean_string, text_dictionary):
-    for word in clean_string.split():
+    for word in clean_string:
         if word in text_dictionary:
             text_dictionary[word] += 1
         else:
