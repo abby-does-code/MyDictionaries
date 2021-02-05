@@ -1,25 +1,29 @@
 # START#
 # This program turns a text into a dict#
 
+undesired = ["'", '"', ",", ".", "!", ":", ";", "#", "@", "?"]
+
 
 def main():
     text_dictionary = {}
-
     infile = open("text.txt", "r")
     file_contents = infile.read()
-    clean_string = strip_string(file_contents)
+    clean_string = strip_punct(file_contents, undesired)
     text_dictionary = split_it_up(clean_string, text_dictionary)
 
     for word, count in sorted(text_dictionary.items()):
         print(word, count)
 
 
-##this function does literally nothing helpful!!!!##
-def strip_string(file_contents):
-    undesired = ["'", '"', ",", ".", "!", ":", ";", "#", "@", "?"]
+def strip_punct(file_contents, undesired):
+
+    strg_to_check = str(file_contents.upper())
+
     for ch in undesired:
-        clean_string = file_contents.rstrip(ch)
-    return clean_string
+        strg_to_check = strg_to_check.replace(ch, "")
+
+    print(strg_to_check)
+    return strg_to_check
 
 
 def split_it_up(clean_string, text_dictionary):
